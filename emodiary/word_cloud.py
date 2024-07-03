@@ -21,7 +21,7 @@ async def get_wordcloud(content: str):
     tags = counts.most_common(70)
 
     font_path = Path(__file__).resolve().parent.parent / 'fonts' / 'nanum_square_neo_bold.ttf'
-    wc = WordCloud(font_path=str(font_path), background_color="#FAFAFA", max_font_size=70)
+    wc = WordCloud(font_path=str(font_path), background_color="#FAFAFA", max_font_size=70, scale=2)
     cloud = wc.generate_from_frequencies(dict(tags))
 
     image_stream = io.BytesIO()
