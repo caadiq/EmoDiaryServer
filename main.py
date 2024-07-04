@@ -4,7 +4,7 @@ import tempfile
 import boto3
 from botocore.exceptions import NoCredentialsError
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
 
 from emodiary.word_cloud import get_wordcloud
@@ -54,4 +54,9 @@ async def wordcloud(request: CustomContentClass):
 
     except Exception as e:
         print(f"Error occurred while getting wordcloud: {e}")
-        raise HTTPException(status_code=400, detail=str(e))
+        return {"success": False, "url": str(e)}
+
+
+    # except Exception as e:
+    #     print(f"Error occurred while getting wordcloud: {e}")
+    #     raise HTTPException(status_code=400, detail=str(e))
