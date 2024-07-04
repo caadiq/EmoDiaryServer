@@ -18,12 +18,6 @@ class CustomContentClass(BaseModel):
     diaryId: int
 
 
-print(os.getenv("AWS_ACCESS_KEY_ID"))
-print(os.getenv("AWS_SECRET_ACCESS_KEY"))
-print(os.getenv("REGION_NAME"))
-print(os.getenv("BUCKET_NAME"))
-
-
 @app.post("/api/emodiary/wordcloud")
 async def wordcloud(request: CustomContentClass):
     try:
