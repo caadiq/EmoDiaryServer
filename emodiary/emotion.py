@@ -4,19 +4,19 @@ class emotionRequest(BaseModel):
     content: str
 
 def calculate_emotion_level(result_data):
-    emtionLevel = 0
+    emtionLevel = " "
     if(result_data["label"] == "LABEL_1"):
         if(float(result_data["score"]) >= 0.9):
-            emtionLevel = 5
+            emtionLevel = "Very Good"
         elif(float(result_data["score"]) >= 0.8):
-            emtionLevel = 4
+            emtionLevel = "Good"
         else:
-            emtionLevel = 3
+            emtionLevel = "Neutral"
     else:
         if(float(result_data["score"]) >= 0.9):
-            emtionLevel = 1
+            emtionLevel = "Very Bad"
         elif(float(result_data["score"]) >= 0.8):
-            emtionLevel = 2
+            emtionLevel = "Bad"
         else:
-            emtionLevel = 3
+            emtionLevel = "Neutral"
     return emtionLevel

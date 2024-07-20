@@ -48,11 +48,11 @@ async def sentiment(request: emotionRequest):
         result = sentiment_model(request.content)
         if isinstance(result, list) and len(result) > 0:
             result_data = result[0]
-            emtionLevel = calculate_emotion_level(result_data)
+            emotionLevel = calculate_emotion_level(result_data)
             response = {
                 "label": result_data["label"],
                 "score": result_data["score"],
-                "emtionLevel": emtionLevel
+                "emotion": emotionLevel
             }
             return JSONResponse(content=response)
         else:
